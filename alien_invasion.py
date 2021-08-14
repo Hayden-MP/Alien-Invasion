@@ -1,27 +1,25 @@
-import sys
 import pygame
+from settings import Settings
+from ship import Ship
+import game_functions as gf
 
 def run_game():
-    # Initialize game and create a screen object
+    # Initialize pygame, settings, and screen object
     pygame.init()
-    screen = pygame.display.set_mode((1000,600))
+    ai_settings = Settings()
+    screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
     pygame.display.set_caption("Alien Invasion")
 
-    # Set background color
-    bg_color = (230, 0, 0)
+    # Make the ship
+    ship = Ship(screen)
 
     # Start with main loop for the game
     while True:
-
-        # Watch for keyboard and mouse events
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
+        # Checks for key presses and mouse events
+        gf.check_events(ship)
+        ship.update()
+        gf.update_screen(ai_settings, screen, ship)
         
-        # Redraw screen during eadh pass through the loop
-        screen.fill(bg_color)
-            
-        # Make the most recently drawn screen visible
-        pygame.display.flip()
+
 
 run_game()
