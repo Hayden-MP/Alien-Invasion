@@ -10,4 +10,7 @@ class Settings():
         self.screen_height = 600
         self.bg_color = (230, 230, 230) # Pygame uses RGB values from 0-255
 
+        # Ship settings
+        self.ship_speed_factor = 1.5
+
     
