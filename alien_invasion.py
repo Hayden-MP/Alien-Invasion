@@ -25,7 +25,7 @@ def run_game():
         gf.check_events(ai_settings, screen, ship, bullets)
         ship.update()
         bullets.update()
-        gf.update_bullets(aliens, bullets)
+        gf.update_bullets(ai_settings, screen, ship, aliens, bullets)
         gf.update_aliens(ai_settings, aliens) # Want to update aliens after bullets to check for hits
         gf.update_screen(ai_settings, screen, ship, aliens, bullets)
         
