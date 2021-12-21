@@ -27,10 +27,13 @@ def run_game():
     while True:
         # Checks for key presses and mouse events
         gf.check_events(ai_settings, screen, ship, bullets)
-        ship.update()
-        bullets.update()
-        gf.update_bullets(ai_settings, screen, ship, aliens, bullets)
-        gf.update_aliens(ai_settings, stats, screen, ship, aliens, bullets) # Want to update aliens after bullets to check for hits
+
+        if stats.game_active:
+            ship.update()
+            #bullets.update()
+            gf.update_bullets(ai_settings, screen, ship, aliens, bullets)
+            gf.update_aliens(ai_settings, stats, screen, ship, aliens, bullets) # Want to update aliens after bullets to check for hits
+        
         gf.update_screen(ai_settings, screen, ship, aliens, bullets)
         
 
